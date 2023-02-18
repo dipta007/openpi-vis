@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/openpi-vis/static/css/main.7f42eb93.css",
-    "main.js": "/openpi-vis/static/js/main.e8c8f029.js",
+    "main.js": "/openpi-vis/static/js/main.8f711735.js",
     "static/js/787.947e9400.chunk.js": "/openpi-vis/static/js/787.947e9400.chunk.js",
     "static/media/train.jsonl": "/openpi-vis/static/media/train.17936836c82e5d2dc7e0.jsonl",
     "static/media/logo.svg": "/openpi-vis/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/openpi-vis/index.html",
     "main.7f42eb93.css.map": "/openpi-vis/static/css/main.7f42eb93.css.map",
-    "main.e8c8f029.js.map": "/openpi-vis/static/js/main.e8c8f029.js.map",
+    "main.8f711735.js.map": "/openpi-vis/static/js/main.8f711735.js.map",
     "787.947e9400.chunk.js.map": "/openpi-vis/static/js/787.947e9400.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7f42eb93.css",
-    "static/js/main.e8c8f029.js"
+    "static/js/main.8f711735.js"
   ]
 }
