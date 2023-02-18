@@ -2,12 +2,32 @@ import logo from './logo.svg';
 import './App.css';
 import json from './gold-v1.1/train.jsonl'
 import { useState, useEffect } from 'react'
+import {
+  HashRouter,
+  Routes,
+  Route,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 
 function App() {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/:album_id" element={<Album/>} />
+        <Route path="/" element={<Album/>} />
+      </Routes>
+    </HashRouter>
+  );
+}
+
+function Album() {
   const [data, setData] = useState([])
   const [url_to_img, setUrl_to_img] = useState({})
   const [urls, setUrls] = useState([])
   const [random_data, setRandom_data] = useState([])
+  const { album_id } = useParams()
+  const navigate = useNavigate()
 
   async function get_data() {
     let data = []
@@ -49,10 +69,19 @@ function App() {
     setUrls(urls)
   }
 
-  const get_random_data = () => {
-    let random_url = urls[Math.floor(Math.random() * urls.length)]
-    let random_data = url_to_img[random_url]
+  const get_random_data = (random=false) => {
+    let id = album_id ? album_id : -1
+    if (random) {
+      id = -1
+    }
+    if (id === -1) {
+      id = urls[Math.floor(Math.random() * urls.length)]
+    } else {
+      id = `www.wikihow.com/${id}`
+    }
+    let random_data = url_to_img[id]
     setRandom_data(random_data)
+    navigate(`/${id.split('/')[1]}`)
   }
 
   useEffect(()=>{
@@ -64,8 +93,9 @@ function App() {
   },[data])
 
   useEffect(()=>{
-    get_random_data()
-  },[url_to_img])
+    if (urls && urls.length)
+      get_random_data()
+  },[urls])
 
   console.log(random_data)
   if (random_data && random_data.length) {
@@ -126,7 +156,7 @@ function App() {
             </tr>
           </table>
           <div style={{ margin: '40px' }}></div>
-          <button onClick={get_random_data}>Next</button>
+          <button onClick={() => get_random_data(true)}>Next</button>
         </>
         : null
       }
